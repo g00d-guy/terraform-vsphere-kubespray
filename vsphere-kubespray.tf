@@ -11,25 +11,6 @@ provider "vsphere" {
   vim_keep_alive       = 45
 }
 
-#
-# Cloud-config
-#
-
-locals {
-  vm_cloud_config = {
-    ssh_pwauth: true,
-    timezone: "Europe/Moscow",
-    manage_etc_hosts: true,
-    package_upgrade: false,
-    manage_resolv_conf: true,
-    disable_root: true,
-    users: [ "default" ]
-    runcmd: [
-      [ "xfs_growfs", "-d", "/" ]
-    ]  
-  }  
-}
-
 #===============================================================================
 # vSphere Data
 #===============================================================================
@@ -238,13 +219,26 @@ resource "local_file" "keepalived_slave" {
 # Locals
 #===============================================================================
 
-# Extra args for ansible playbooks #
+# Extra args for ansible playbooks & cloud-config
 locals {
   extra_args = {
     ubuntu = "-T 300"
     debian = "-T 300 -e 'ansible_become_method=su'"
     centos = "-T 300"
     rhel   = "-T 300"
+  }
+
+  vm_cloud_config = {
+    ssh_pwauth: true,
+    timezone: "Europe/Moscow",
+    manage_etc_hosts: true,
+    package_upgrade: false,
+    manage_resolv_conf: true,
+    disable_root: true,
+    users: [ "default" ]
+    runcmd: [
+      [ "xfs_growfs", "-d", "/" ]
+    ]  
   }
 }
 

@@ -59,6 +59,13 @@ vsphere_resource_pool: "${vsphere_resource_pool}"
 ## kubeadm deployment mode
 kubeadm_enabled: true
 
+# Helm deployment
+helm_enabled: true
+
+# Cert manager deployment
+cert_manager_enabled: true
+cert_manager_namespace: "cert-manager"
+
 # Skip alert information
 skip_non_kubeadm_warning: false
 

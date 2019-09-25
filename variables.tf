@@ -68,14 +68,6 @@ variable "vm_user" {
   description = "SSH user for the vSphere virtual machines"
 }
 
-variable "vm_password" {
-  description = "SSH password for the vSphere virtual machines"
-}
-
-variable "vm_privilege_password" {
-  description = "Sudo or su password for the vSphere virtual machines"
-}
-
 variable "vm_distro" {
   description = "Linux distribution of the vSphere virtual machines (ubuntu/centos/debian/rhel)"
 }
@@ -155,8 +147,12 @@ variable "vm_gateway" {
   description = "Gateway for the Kubernetes nodes"
 }
 
-variable "vm_dns" {
+variable "vm_dns_addr" {
   description = "DNS for the Kubernetes nodes"
+}
+
+variable "vm_dns_search" {
+  description = "DNS domain search list for the Kubernetes nodes"
 }
 
 variable "vm_domain" {

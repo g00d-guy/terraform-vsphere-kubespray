@@ -82,6 +82,9 @@ vm_master_cpu = "2"
 # The amount of RAM allocated to the master virtual machines #
 vm_master_ram = "4096"
 
+# Interface on master nodes
+vm_master_iface = "eth0"
+
 # The IP addresses of the master virtual machines. You need to define 3 IPs for the masters #
 vm_master_ips = {
   "0" = ""
@@ -99,6 +102,9 @@ vm_worker_cpu = "8"
 # The amount of RAM allocated to the worker virtual machines #
 vm_worker_ram = "16392"
 
+# Interface on worker nodes
+vm_worker_iface = "eth0"
+
 # The IP addresses of the master virtual machines. You need to define 1 IP or more for the workers #
 vm_worker_ips = {
   "0" = ""
@@ -115,6 +121,9 @@ vm_haproxy_cpu = "2"
 
 # The amount of RAM allocated to the load balancer virtual machine #
 vm_haproxy_ram = "2048"
+
+# Interface on haproxy nodes
+vm_haproxy_iface = "eth0"
 
 # The IP address of the load balancer floating VIP #
 vm_haproxy_vip = ""

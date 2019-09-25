@@ -31,6 +31,18 @@ frontend kubernetes
 	mode tcp
 	default_backend kubernetes-master-nodes
 
+frontend traefik-80
+	bind ${bind_ip}:80
+	option tcplog
+	mode tcp
+	default_backend kubernetes-master-nodes
+
+frontend traefik-443
+	bind ${bind_ip}:443
+	option tcplog
+	mode tcp
+	default_backend kubernetes-master-nodes
+
 backend kubernetes-master-nodes
 	mode tcp
 	balance roundrobin

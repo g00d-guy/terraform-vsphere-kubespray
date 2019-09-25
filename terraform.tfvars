@@ -37,13 +37,13 @@ vsphere_vcp_datastore = ""
 vm_user = ""
 
 # The linux distribution used by the virtual machines (ubuntu/debian/centos/rhel) #
-vm_distro = ""
+vm_distro = "ubuntu"
 
 # The prefix to add to the names of the virtual machines #
-vm_name_prefix = "k8s-kubespray"
+vm_name_prefix = ""
 
 # The name of the vSphere virtual machine and template folder that will be created to store the virtual machines #
-vm_folder = "kubernetes-kubespray"
+vm_folder = "K8S"
 
 # The datastore name used to store the files of the virtual machines #
 vm_datastore = ""
@@ -58,13 +58,16 @@ vm_netmask = ""
 vm_gateway = ""
 
 # The DNS server used by the virtual machines #
-vm_dns = ""
+vm_dns_addr = "8.8.8.8,8.8.4.4"
+
+# The DNS search order
+vm_dns_search = "k8s.infra.kng,infra.kng,kupivip.local"
 
 # The domain name used by the virtual machines #
 vm_domain = ""
 
 # The vSphere template the virtual machine are based on #
-vm_template = ""
+vm_template = "Templates/Ubuntu-18.04"
 
 # Use linked clone (true/false)
 vm_linked_clone = "false"
@@ -77,7 +80,7 @@ vm_linked_clone = "false"
 vm_master_cpu = "2"
 
 # The amount of RAM allocated to the master virtual machines #
-vm_master_ram = "2048"
+vm_master_ram = "4096"
 
 # The IP addresses of the master virtual machines. You need to define 3 IPs for the masters #
 vm_master_ips = {
@@ -91,10 +94,10 @@ vm_master_ips = {
 #===============================================================================
 
 # The number of vCPU allocated to the worker virtual machines #
-vm_worker_cpu = "2"
+vm_worker_cpu = "8"
 
 # The amount of RAM allocated to the worker virtual machines #
-vm_worker_ram = "2048"
+vm_worker_ram = "16392"
 
 # The IP addresses of the master virtual machines. You need to define 1 IP or more for the workers #
 vm_worker_ips = {
@@ -108,10 +111,10 @@ vm_worker_ips = {
 #===============================================================================
 
 # The number of vCPU allocated to the load balancer virtual machine #
-vm_haproxy_cpu = "1"
+vm_haproxy_cpu = "2"
 
 # The amount of RAM allocated to the load balancer virtual machine #
-vm_haproxy_ram = "1024"
+vm_haproxy_ram = "2048"
 
 # The IP address of the load balancer floating VIP #
 vm_haproxy_vip = ""
@@ -140,7 +143,7 @@ rh_password = ""
 k8s_kubespray_url = "https://github.com/kubernetes-sigs/kubespray.git"
 
 # The version of Kubespray that will be used to deploy Kubernetes #
-k8s_kubespray_version = "v2.12.0"
+k8s_kubespray_version = "v2.11.0"
 
 # The Kubernetes version that will be deployed #
 k8s_version = "v1.16.0"

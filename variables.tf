@@ -116,14 +116,26 @@ variable "k8s_version" {
   default     = "1.16.0"
 }
 
+variable "vm_master_iface" {
+  description = "Interface used for the Kubernetes master nodes"
+}
+
 variable "vm_master_ips" {
   type        = "map"
   description = "IPs used for the Kubernetes master nodes"
 }
 
+variable "vm_worker_iface" {
+  description = "Interface used for the Kubernetes worker nodes"
+}
+
 variable "vm_worker_ips" {
   type        = "map"
   description = "IPs used for the Kubernetes worker nodes"
+}
+
+variable "vm_haproxy_iface" {
+  description = "Interface name used for the HAProxy floating VIP"
 }
 
 variable "vm_haproxy_vip" {

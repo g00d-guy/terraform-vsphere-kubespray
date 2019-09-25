@@ -179,6 +179,7 @@ data "template_file" "keepalived_master" {
   template = "${file("templates/keepalived_master.tpl")}"
 
   vars = {
+    iface = "${var.vm_haproxy_iface}"
     virtual_ip = "${var.vm_haproxy_vip}"
   }
 }
@@ -188,6 +189,7 @@ data "template_file" "keepalived_slave" {
   template = "${file("templates/keepalived_slave.tpl")}"
 
   vars = {
+    iface = "${var.vm_haproxy_iface}"
     virtual_ip = "${var.vm_haproxy_vip}"
   }
 }
@@ -447,7 +449,7 @@ resource "vsphere_virtual_machine" "master" {
             {
               "version": 2,
               "ethernets": {
-                "eth0": {
+                "${var.vm_master_iface}": {
                   "addresses": [ "${lookup(var.vm_master_ips, count.index)}/${var.vm_netmask}" ],
                   "gateway4": "${var.vm_gateway}",
                   "nameservers": {
@@ -521,7 +523,7 @@ resource "vsphere_virtual_machine" "worker" {
             {
               "version": 2,
               "ethernets": {
-                "eth0": {
+                "${var.vm_worker_iface}": {
                   "addresses": [ "${lookup(var.vm_worker_ips, count.index)}/${var.vm_netmask}" ],
                   "gateway4": "${var.vm_gateway}",
                   "nameservers": {
@@ -600,7 +602,7 @@ resource "vsphere_virtual_machine" "haproxy" {
             {
               "version": 2,
               "ethernets": {
-                "eth0": {
+                "${var.vm_haproxy_iface}": {
                   "addresses": [ "${lookup(var.vm_haproxy_ips, count.index)}/${var.vm_netmask}" ],
                   "gateway4": "${var.vm_gateway}",
                   "nameservers": {
